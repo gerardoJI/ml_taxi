@@ -1,10 +1,10 @@
-🛺 #Tarifa Taxi NY
+🚕 #Tarifa Taxi NY 🚕
 
-🚂🚂 ¡Hola! Soy Gerardo Jiménez (LinkedIn,www.linkedin.com/in/gerardo-jimenez-islas), data analyst e ingeniero de minas y metalurgia. Mi pasión por los datos y las tecnologías emergentes me ha llevado a comenzar este camino en el campo de machine learning e inteligencia artificial.
+🚂🚂 ¡Hola! Soy Gerardo Jiménez (LinkedIn, www.linkedin.com/in/gerardo-jimenez-islas), data analyst e ingeniero de minas y metalurgia. Mi pasión por los datos y las tecnologías emergentes me ha llevado a comenzar este camino en el campo de machine learning e inteligencia artificial.
 
 - Mi objetivo es seguir aprendiendo y aplicando mis conocimientos en proyectos prácticos.
 
-🛺🛺🛺🛺🛺🛺🛺🛺
+🚕🚕🚕🚕🚕🚕🚕🚕🚕🚕
 Este proyecto tiene como objetivo predecir el precio de los viajes en taxi en la ciudad de Nueva York utilizando modelos de machine learning. 
 
 ![taxi_ml](taxi.jpg)
@@ -50,4 +50,5 @@ explainer = shap.KernelExplainer(forest.predict, X_train_scaled)
 # Calcular los valores SHAP para el conjunto de datos de prueba
 shap_values = explainer.shap_values(X_test_scaled)
 ```
-
+🚕
+![taxi_ml_res](portada.jpg)
