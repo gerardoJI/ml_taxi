@@ -32,8 +32,8 @@ El segundo paso es analizar y predecir los datos utilizando modelos de machine l
 🔽 Aplicación de PCA para reducir la dimensionalidad de las coordenadas de latitud y longitud.  
 ⚖️ Estandarización de los datos.  
 🤖 Entrenamiento y evaluación de varios modelos de machine learning, incluyendo:  
-Random Forest
-Gradient Boosting
+Random Forest  
+Gradient Boosting  
 XGBoost  
 🏆 Selección del modelo final basado en las métricas de rendimiento.  
 📊 Análisis de la importancia de las variables consideradas durante la predicción, por medio de la librería SHAP  
