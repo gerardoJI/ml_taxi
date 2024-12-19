@@ -1,6 +1,6 @@
-🚕 # Tarifa Taxi NY 🚕
+#Tarifa Taxi NY 🚕🚕 
 
-🚂🚂 ¡Hola! Soy Gerardo Jiménez (LinkedIn, www.linkedin.com/in/gerardo-jimenez-islas), data analyst e ingeniero de minas y metalurgia. Mi pasión por los datos y las tecnologías emergentes me ha llevado a comenzar este camino en el campo de machine learning e inteligencia artificial.
+🚂🚂 ¡Hola! Soy Gerardo Jiménez [LinkedIn](www.linkedin.com/in/gerardo-jimenez-islas), data analyst e ingeniero de minas y metalurgia. Mi pasión por los datos y las tecnologías emergentes me ha llevado a comenzar este camino en el campo de machine learning e inteligencia artificial.
 
 - Mi objetivo es seguir aprendiendo y aplicando mis conocimientos en proyectos prácticos.
 
