@@ -14,7 +14,7 @@ El proyecto tiene como objetivo predecir el precio de los viajes en taxi en la c
 
 # 📂  Estructura del Proyecto
 
-## 1. 🧹 Limpieza de Datos
+## 1. 🧹 Limpieza de Datos y feature engineering
 El primer paso es limpiar y preparar los datos. Esto se realiza en el notebook limpieza_datos.ipynb. En este notebook se realizan las siguientes tareas:
 
 📥 Carga del dataset desde Hugging Face.
