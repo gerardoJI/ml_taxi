@@ -1,4 +1,4 @@
-🚕 #Tarifa Taxi NY 🚕
+🚕 # Tarifa Taxi NY 🚕
 
 🚂🚂 ¡Hola! Soy Gerardo Jiménez (LinkedIn, www.linkedin.com/in/gerardo-jimenez-islas), data analyst e ingeniero de minas y metalurgia. Mi pasión por los datos y las tecnologías emergentes me ha llevado a comenzar este camino en el campo de machine learning e inteligencia artificial.
 
@@ -9,10 +9,11 @@ Este proyecto tiene como objetivo predecir el precio de los viajes en taxi en la
 
 ![taxi_ml](taxi.jpg)
 
-**El proyecto se divide en dos notebooks principales:** uno para la limpieza y preparación de los datos, y otro para el análisis y predicción utilizando modelos de machine learning.
+** El proyecto se divide en dos notebooks principales: ** uno para la limpieza y preparación de los datos, y otro para el análisis y predicción utilizando modelos de machine learning.
 
-📂 ##Estructura del Proyecto
-##1. 🧹 Limpieza de Datos
+📂 ## Estructura del Proyecto
+
+## 1. 🧹 Limpieza de Datos
 El primer paso es limpiar y preparar los datos. Esto se realiza en el notebook limpieza_datos.ipynb. En este notebook se realizan las siguientes tareas:
 
 📥 Carga del dataset desde Hugging Face.
@@ -22,7 +23,7 @@ El primer paso es limpiar y preparar los datos. Esto se realiza en el notebook l
 🌍 Transformación de variables cíclicas utilizando funciones trigonométricas.
 💾 Guardado del dataframe final en un archivo CSV (data/df_final.csv).
 
-##2. 📊 Análisis y Predicción
+## 2. 📊 Análisis y Predicción
 El segundo paso es analizar y predecir los datos utilizando modelos de machine learning. Esto se realiza en el notebook ml.ipynb. En este notebook se realizan las siguientes tareas:
 
 📥 Carga del dataframe final (data/df_final.csv).
@@ -50,5 +51,5 @@ explainer = shap.KernelExplainer(forest.predict, X_train_scaled)
 # Calcular los valores SHAP para el conjunto de datos de prueba
 shap_values = explainer.shap_values(X_test_scaled)
 ```
-🚕
+
 ![taxi_ml_res](portada.jpg)
