@@ -4,7 +4,8 @@
 Mi pasión por los datos y las tecnologías emergentes me ha llevado a comenzar este camino en el campo de machine learning e inteligencia artificial.
 
 🚕🚕🚕🚕🚕🚕🚕
-En este repositorio presento **Tarifa Taxi NY**
+En este repositorio presento **Tarifa Taxi NY.**
+
 El proyecto tiene como objetivo predecir el precio de los viajes en taxi en la ciudad de Nueva York, utilizando modelos de machine learning. 
 
 ![taxi_ml](taxi.jpg)
