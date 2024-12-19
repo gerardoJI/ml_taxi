@@ -1,4 +1,4 @@
-#----------------------------FUNCIONES PARA LA LIMPIEZA DE DATOS Y ADICIÓN DE COLUMNAS AL DATAFRAME
+#----------------------------FUNCIONES PARA LA LIMPIEZA DE DATOS
 
 def limpieza1(df):
     import pandas as pd
@@ -13,22 +13,67 @@ def limpieza1(df):
     datos_f = df.shape[0]  # variable para almacenar cantidad de datos finales
     
     # Se imprime la cantidad de filas eliminadas por valores nulos y el porcentaje que representa sobre el total
-    print(f'Se eliminaron {datos_i - datos_f} por valores nulos, es decir, el {round(1 - datos_i / datos_f * 100, 2)}% de los datos.')
+    print(f'Se eliminaron {datos_i - datos_f} por valores nulos. Restan {datos_f} datos.')
+    
+    # Retorna el dataframe modificado y sin los valores nulos
+    return df
+
+#----------------------------FUNCIONES FEATURE ENGINEERING----------------------------------------
+
+def ft_eng1(df):
+    """
+    Esta función realiza varias transformaciones y generaciones de nuevas características en el dataframe de taxis.
+    
+    Los pasos realizados son:
+    1. Conversión de la columna "pickup_datetime" a formato datetime.
+    2. Extracción de la hora y minuto del "pickup_datetime".
+    3. Creación de una columna booleana para identificar si el viaje ocurrió durante las horas pico.
+    4. Extracción de día, mes, año y día de la semana del "pickup_datetime".
+    5. Cálculo de la distancia entre las coordenadas de recogida y entrega del viaje.
+    6. Eliminación de la columna "pickup_datetime" original.
+
+    Parámetros:
+    - df: DataFrame que contiene la información de los viajes en taxi.
+
+    Retorna:
+    - df: DataFrame con las nuevas columnas generadas y la columna "pickup_datetime" eliminada.
+    """
+    
+    import pandas as pd
     
     # Conversión de la columna "pickup_datetime" a tipo datetime
     df['pickup_datetime'] = pd.to_datetime(df['pickup_datetime'])
+
+    # Se crea una nueva columna "pickup_hour" extrayendo la hora de la columna "pickup_datetime"
+    df['pickup_hour'] = df['pickup_datetime'].dt.hour
     
-    # Se crea una nueva columna "hour" extrayendo la hora de la columna "pickup_datetime"
-    df['hour'] = df['pickup_datetime'].dt.hour
+    # Se crea una nueva columna "pickup_minutes" extrayendo los minutos de la columna "pickup_datetime"
+    df['pickup_minutes'] = df['pickup_datetime'].dt.minute  # 'minutes' está mal, debería ser 'minute'
+
+    # Genera columna booleana para definir si es hora pico (7-9 AM y 5-7 PM)
+    df['peak_hour'] = df['pickup_hour'].isin([7, 8, 9, 17, 18, 19])
+
+    # Crear las nuevas columnas con el día, mes y año de la fecha de recogida
+    df['pickup_year'] = df['pickup_datetime'].dt.year  # Año del viaje
+    df['pickup_month'] = df['pickup_datetime'].dt.month  # Mes del viaje
+    df['pickup_day'] = df['pickup_datetime'].dt.day  # Día del mes del viaje
     
-    # Se crea una nueva columna "date" extrayendo la fecha (sin la hora) de la columna "pickup_datetime"
-    df['date'] = df['pickup_datetime'].dt.date
+    # Genera columna con valores del 0 al 6 para indicar día de la semana
+    # 0 = lunes, 6 = domingo
+    df['day_of_week'] = df['pickup_datetime'].dt.dayofweek  # Cambiado a 'pickup_datetime' (no 'date')
+
+    # Se elimina la columna "pickup_datetime"
+    df.drop(columns=["pickup_datetime"], inplace=True)  # 'inplace=True' asegura que el cambio se aplique directamente
+
+    # Se calcula la distancia lineal del viaje y se crea la columna correspondiente
+    from functions_limpieza import calcular_distancia
+    df = calcular_distancia(df, "pickup_latitude", "pickup_longitude", "dropoff_latitude", "dropoff_longitude")
+
+    # Mensaje indicando los resultados del proceso
+    print(f"\n Se eliminó la columna 'pickup_datetime'. Las columnas en el dataframe son: {df.columns}.")
     
-    # Mensaje indicando que las columnas "hour" y "date" han sido añadidas
-    print("\n Se añadieron las columnas hour y date.")
-    
-    # Retorna el dataframe modificado con las nuevas columnas y sin los valores nulos
     return df
+
 
 
 def calcular_distancia(df, lat1_col, lon1_col, lat2_col, lon2_col):
@@ -91,5 +136,32 @@ def calcular_distancia(df, lat1_col, lon1_col, lat2_col, lon2_col):
     
     # Calcular la distancia para cada fila del DataFrame y agregar la columna 'distancia'
     df['distance'] = df.apply(lambda row: haversine(row[lat1_col], row[lon1_col], row[lat2_col], row[lon2_col]), axis=1)
+    
+    return df
+
+import numpy as np
+import pandas as pd
+
+def ft_eng2(df, variables_ciclicas):
+    """
+    Esta función aplica una transformación trigonométrica (seno y coseno) a las columnas cíclicas especificadas
+    en la lista 'variables_ciclicas', y elimina las columnas originales del dataframe.
+
+    Parámetros:
+    - df: DataFrame que contiene las columnas a transformar.
+    - variables_ciclicas: Lista de nombres de las columnas que contienen variables cíclicas a transformar.
+
+    Retorna:
+    - df: DataFrame con las nuevas columnas transformadas y las originales eliminadas.
+    """
+    
+    # Para cada variable en la lista de variables cíclicas
+    for var in variables_ciclicas:
+        # Calcular las transformaciones trigonométricas de seno y coseno
+        df[f'{var}_sin'] = np.sin(2 * np.pi * df[var] / df[var].max())  # Seno
+        df[f'{var}_cos'] = np.cos(2 * np.pi * df[var] / df[var].max())  # Coseno
+
+    # Eliminar las columnas originales
+    df.drop(columns=variables_ciclicas, inplace=True)
     
     return df
