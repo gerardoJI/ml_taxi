@@ -8,7 +8,7 @@ En este repositorio presento **Tarifa Taxi NY.**
 
 El proyecto tiene como objetivo predecir el precio de los viajes en taxi en la ciudad de Nueva York, utilizando modelos de machine learning. 
 
-![taxi_ml](taxi.jpg)
+![taxi_ml](media/taxi.jpg)
 
 **El proyecto se divide en dos notebooks principales:** uno para la limpieza y preparación de los datos, y otro para el análisis y predicción utilizando modelos de machine learning.
 
@@ -55,4 +55,4 @@ shap_values = explainer.shap_values(X_test_scaled)
 ```
   
 
-![taxi_ml_res](portada.jpg)
+![taxi_ml_res](media/portada.jpg)
