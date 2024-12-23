@@ -3,7 +3,6 @@ pandas
 numpy
 plotly
 scikit-learn
-joblib
-pickle
+joblib==0.14.1
 datetime
 gdown
