@@ -4,5 +4,4 @@ numpy
 plotly
 scikit-learn
 joblib==0.14.1
-datetime
 gdown
