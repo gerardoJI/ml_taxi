@@ -6,6 +6,8 @@ from sklearn.preprocessing import StandardScaler
 from datetime import datetime
 import gdown
 
+st.set_option('deprecation.showPyplotGlobalUse', False)
+
 # ID del archivo de Google Drive
 file_id = '19HP4mVoQXLVGImqRp88C0pWYlsubBsjy'
 
